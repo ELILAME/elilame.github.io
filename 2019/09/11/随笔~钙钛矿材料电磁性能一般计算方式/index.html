@@ -62,7 +62,7 @@
 <meta property="og:site_name" content="君の影 星のように">
 <meta property="og:description" content="钙钛矿材料电磁性能一般计算方式我们计算钙钛矿电磁性能的时候一般通过VASP软件包完成，由于作者本人才疏学浅，故本文着重探讨计算的操作方面，对相关原理和基本理论不做详细解释。 计算方式分类： GGA 和 GGA+U 体系结构分类：Fim（亚铁磁）  Fm（铁磁）  AFM-（反铁磁）包括：A-（A型反铁磁） B-（B型反铁磁） C-（C型反铁磁） G-（G型反铁磁） VASP计算基本输入文件：INC">
 <meta property="og:locale" content="zh-HK">
-<meta property="og:updated_time" content="2019-09-11T09:26:10.479Z">
+<meta property="og:updated_time" content="2019-09-11T11:28:51.955Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="随笔~钙钛矿材料电磁性能一般计算方式">
 <meta name="twitter:description" content="钙钛矿材料电磁性能一般计算方式我们计算钙钛矿电磁性能的时候一般通过VASP软件包完成，由于作者本人才疏学浅，故本文着重探讨计算的操作方面，对相关原理和基本理论不做详细解释。 计算方式分类： GGA 和 GGA+U 体系结构分类：Fim（亚铁磁）  Fm（铁磁）  AFM-（反铁磁）包括：A-（A型反铁磁） B-（B型反铁磁） C-（C型反铁磁） G-（G型反铁磁） VASP计算基本输入文件：INC">
@@ -245,7 +245,7 @@
                 
               
 
-              <time title="創建時間：2019-09-11 00:00:00 / 修改時間：17:26:10" itemprop="dateCreated datePublished" datetime="2019-09-11T00:00:00+08:00">2019-09-11</time>
+              <time title="創建時間：2019-09-11 00:00:00 / 修改時間：19:28:51" itemprop="dateCreated datePublished" datetime="2019-09-11T00:00:00+08:00">2019-09-11</time>
             </span>
           
             
@@ -264,22 +264,22 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="钙钛矿材料电磁性能一般计算方式"><a href="#钙钛矿材料电磁性能一般计算方式" class="headerlink" title="钙钛矿材料电磁性能一般计算方式"></a>钙钛矿材料电磁性能一般计算方式</h3><p>我们计算钙钛矿电磁性能的时候一般通过VASP软件包完成，由于作者本人才疏学浅，故本文着重探讨计算的操作方面，对相关原理和基本理论不做详细解释。</p>
+        <h1 id="钙钛矿材料电磁性能一般计算方式"><a href="#钙钛矿材料电磁性能一般计算方式" class="headerlink" title="钙钛矿材料电磁性能一般计算方式"></a>钙钛矿材料电磁性能一般计算方式</h1><p>我们计算钙钛矿电磁性能的时候一般通过VASP软件包完成，由于作者本人才疏学浅，故本文着重探讨计算的操作方面，对相关原理和基本理论不做详细解释。</p>
 <p>计算方式分类： GGA 和 GGA+U</p>
 <p>体系结构分类：Fim（亚铁磁）  Fm（铁磁）  AFM-（反铁磁）包括：A-（A型反铁磁） B-（B型反铁磁） C-（C型反铁磁） G-（G型反铁磁）</p>
 <p>VASP计算基本输入文件：<code>INCAR</code>  <code>KPOINTS</code>  <code>POTCAR</code>  <code>POSCAR</code></p>
 <p>计算基本流程：结构优化（晶格常数A）–  原子弛豫（各原子坐标）–  静态计算scf  – 态密度dos<br>分别简写为：    opt-isif3   –  opt-isif2  –  scf  –  dos</p>
-<h2 id="钙钛矿材料电磁性能计算操作流程"><a href="#钙钛矿材料电磁性能计算操作流程" class="headerlink" title="钙钛矿材料电磁性能计算操作流程"></a>钙钛矿材料电磁性能计算操作流程</h2><p> 建立某种材料的文件夹–建立磁构型的文件夹–建立计算方式的文件夹–建立各计算流程文件夹</p>
+<h1 id="钙钛矿材料电磁性能计算操作流程"><a href="#钙钛矿材料电磁性能计算操作流程" class="headerlink" title="钙钛矿材料电磁性能计算操作流程"></a>钙钛矿材料电磁性能计算操作流程</h1><p> 建立某种材料的文件夹–建立磁构型的文件夹–建立计算方式的文件夹–建立各计算流程文件夹</p>
 <p>[themes/next/source/images/ruler.jpg]</p>
 <h1 id="基本输入文件参数"><a href="#基本输入文件参数" class="headerlink" title="基本输入文件参数"></a>基本输入文件参数</h1><p>例：<br>INCAR：<br><code>system =LaMn3Rh4O12</code><br><code>ISTART= 0</code><br><code>ICHARG= 2</code><br><code>PREC = high #cutoff + wrap around errors.</code><br><code>IBRION= 2 #conj. grad. relaxation.</code><br><code>NSW=551 #number of ionic steps taken in minimization. Make it odd.</code><br><code>ENCUT=450.000 #cutoff</code><br><code>EDIFF=1.0e-04</code><br><code>EDIFFG=-0.05</code><br><code>ISIF=3</code><br><code>ISMEAR= 0  #BZ integration method (for relaxation runs).</code><br><code>SIGMA= 0.2</code><br><code>LWAVE = .FALSE.</code><br><code>LCHARG = .FALSE.</code><br><code>LBERRY = .FALSE.</code><br><code>#ISYM= 0</code><br><code>#IALGO= 48</code><br><code>POTIM= 0.2</code><br><code>#ALGO = Normal</code><br><code>#LREAL= FALSE</code><br><code>LREAL= Auto</code><br><code>#NELM= 850</code><br><code>MAGMOM=2*0 6*6 8*6 24*0</code><br><code>#VOSKOWN= 1</code><br><code>#LORBIT = 11  #For LDOS calculation</code><br><code>#ICHARG = 11</code><br><code>ISPIN= 2</code><br><code>#LDAU= .TRUE.</code><br><code>#LDAUL= -1 2 2 -1</code><br><code>#LDAUU= 0 4.7 3.7 0</code><br><code>#LDAUJ= 0 0.7 0.7 0</code><br><code>#LDAUPRINT= 2</code><br><code>#LMAXMIX= 4</code><br><code>#LPARD= .TRUE.</code><br><code>#NBMOD= -3</code><br><code>#EINT= -0.5</code><br><code>NCORE=4</code></p>
 <p> KPOINTS:<br> <code>LaMn3Rh4O12</code><br><code>0</code><br><code>Monkhorest-Pack</code><br><code>7 7 7</code><br><code>0 0 0</code></p>
 <p>POSCAR:<br>原子坐标文件，使用MS生成</p>
 <p>POTCAR：<br>赝势文件：cat La/POTACR Mn/POTCAR Rh/POTCAR O/POTCAR &gt; POTCAR</p>
-<h1 id="基本操作流程"><a href="#基本操作流程" class="headerlink" title="基本操作流程"></a>基本操作流程</h1><p> #GGA<br>1.将以上4个基本输入文件放入opt-isif3文件夹中，再将vasp.pbs文件导入，使用qsub vasp.pbs 提交任务。</p>
+<h1 id="基本操作流程"><a href="#基本操作流程" class="headerlink" title="基本操作流程"></a>基本操作流程</h1><h2 id="GGA"><a href="#GGA" class="headerlink" title="GGA"></a>GGA</h2><p>1.将以上4个基本输入文件放入opt-isif3文件夹中，再将vasp.pbs文件导入，使用qsub vasp.pbs 提交任务。</p>
 <p>2.将opt-isif3文件夹中INCAR, KPOINTS, POTCAR和CONTCAR文件导入opt-isif2文件夹中，将CONTCAR改名为POSCAR（mv CONTCAR POSCAR），修改参数<br>sed -i ‘s/ISIF=3/ISIF=2/g’ INCAR<br>sed -i ‘s/EDIFF=1.0e-04/EDIFF=1.0e-05/g’ INCAR<br>sed -i ‘s/EDIFFG=-0.05/EDIFFG=-0.01/g’ INCAR，<br>将vasp.pbs文件导入，使用qsub vasp.pbs 提交任务。</p>
 <p>3.将opt-isif2文件夹中所有文件拷入scf文件夹中，修改参数<br>sed -i ‘s/ISIF=2/#ISIF=2/g’ INCAR<br>sed -i ‘s/EDIFFG=-0.01/#EDIFFG=-0.01/g’ INCAR<br>sed -i ‘s/#LORBIT = 11/LORBIT = 11/g’ INCAR<br>sed -i ‘s/POTIM= 0.2/#POTIM= 0.2/g’ INCAR<br>sed -i ‘s/NSW=551/NSW=0/g’ INCAR<br>sed -i ‘s/IBRION= 2/#IBRION= 2/g’ INCAR<br>sed -i ‘s/LWAVE = .FALSE./LWAVE = .TURE./g’ INCAR<br>sed -i ‘s/LCHARG = .FALSE./LCHARG = .TURE./g’ INCAR<br>sed -i ‘s/ISMEAR= 0/ISMEAR= -5/g’ INCAR<br>sed -i ‘s/SIGMA= 0.2/#SIGMA= 0.2/g’ INCAR<br>将vasp.pbs文件导入，使用qsub vasp.pbs 提交任务。</p>
 <p>4.将scf文件夹中所有文件拷入scf文件夹中，修改参数<br>sed -i ‘s/7 7 7/10 10 10/g’ KPOINTS<br>sed -i ‘s/ISTART= 0/ISTART= 1/g’ INCAR<br>sed -i ‘s/ICHARG= 2/ICHARG= 11/g’ INCAR<br>将vasp.pbs文件导入，使用qsub vasp.pbs 提交任务。</p>
-<p>#GGA+U<br>操作方式类似</p>
+<h2 id="GGA-U"><a href="#GGA-U" class="headerlink" title="GGA+U"></a>GGA+U</h2><p>操作方式类似</p>
 
     </div>
 
@@ -322,8 +322,8 @@
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/2019/09/11/教程~从零开始组装Vasp服务器/" rel="prev" title="教程~从零开始组装Vasp服务器">
-                  教程~从零开始组装Vasp服务器 <i class="fa fa-chevron-right"></i>
+                <a href="/2019/09/11/随笔~PS vite破解/" rel="prev" title="随笔~PS vite破解">
+                  随笔~PS vite破解 <i class="fa fa-chevron-right"></i>
                 </a>
               
             </div>
@@ -373,7 +373,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#钙钛矿材料电磁性能一般计算方式"><span class="nav-number">1.</span> <span class="nav-text">钙钛矿材料电磁性能一般计算方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#钙钛矿材料电磁性能计算操作流程"><span class="nav-number"></span> <span class="nav-text">钙钛矿材料电磁性能计算操作流程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本输入文件参数"><span class="nav-number"></span> <span class="nav-text">基本输入文件参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本操作流程"><span class="nav-number"></span> <span class="nav-text">基本操作流程</span></a></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#钙钛矿材料电磁性能一般计算方式"><span class="nav-number">1.</span> <span class="nav-text">钙钛矿材料电磁性能一般计算方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#钙钛矿材料电磁性能计算操作流程"><span class="nav-number">2.</span> <span class="nav-text">钙钛矿材料电磁性能计算操作流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本输入文件参数"><span class="nav-number">3.</span> <span class="nav-text">基本输入文件参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本操作流程"><span class="nav-number">4.</span> <span class="nav-text">基本操作流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GGA"><span class="nav-number">4.1.</span> <span class="nav-text">GGA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GGA-U"><span class="nav-number">4.2.</span> <span class="nav-text">GGA+U</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
