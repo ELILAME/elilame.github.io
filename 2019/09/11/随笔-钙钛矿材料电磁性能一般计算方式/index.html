@@ -9,7 +9,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 3.8.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
@@ -58,15 +58,17 @@
   <meta name="description" content="钙钛矿材料电磁性能一般计算方式我们计算钙钛矿电磁性能的时候一般通过VASP软件包完成，由于作者本人才疏学浅，故本文着重探讨计算的操作方面，对相关原理和基本理论不做详细解释。 计算方式分类： GGA 和 GGA+U 体系结构分类：Fim（亚铁磁）  Fm（铁磁）  AFM-（反铁磁）包括：A-（A型反铁磁） B-（B型反铁磁） C-（C型反铁磁） G-（G型反铁磁） VASP计算基本输入文件：INC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="随笔~钙钛矿材料电磁性能一般计算方式">
-<meta property="og:url" content="http://yoursite.com/2019/09/11/随笔~钙钛矿材料电磁性能一般计算方式/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/09/11/随笔-钙钛矿材料电磁性能一般计算方式/index.html">
 <meta property="og:site_name" content="君の影 星のように">
 <meta property="og:description" content="钙钛矿材料电磁性能一般计算方式我们计算钙钛矿电磁性能的时候一般通过VASP软件包完成，由于作者本人才疏学浅，故本文着重探讨计算的操作方面，对相关原理和基本理论不做详细解释。 计算方式分类： GGA 和 GGA+U 体系结构分类：Fim（亚铁磁）  Fm（铁磁）  AFM-（反铁磁）包括：A-（A型反铁磁） B-（B型反铁磁） C-（C型反铁磁） G-（G型反铁磁） VASP计算基本输入文件：INC">
 <meta property="og:locale" content="zh-HK">
-<meta property="og:updated_time" content="2019-09-11T11:28:51.955Z">
+<meta property="og:image" content="http://yoursite.com/images/2.jpg">
+<meta property="og:updated_time" content="2019-09-16T13:04:52.454Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="随笔~钙钛矿材料电磁性能一般计算方式">
 <meta name="twitter:description" content="钙钛矿材料电磁性能一般计算方式我们计算钙钛矿电磁性能的时候一般通过VASP软件包完成，由于作者本人才疏学浅，故本文着重探讨计算的操作方面，对相关原理和基本理论不做详细解释。 计算方式分类： GGA 和 GGA+U 体系结构分类：Fim（亚铁磁）  Fm（铁磁）  AFM-（反铁磁）包括：A-（A型反铁磁） B-（B型反铁磁） C-（C型反铁磁） G-（G型反铁磁） VASP计算基本输入文件：INC">
-  <link rel="canonical" href="http://yoursite.com/2019/09/11/随笔~钙钛矿材料电磁性能一般计算方式/">
+<meta name="twitter:image" content="http://yoursite.com/images/2.jpg">
+  <link rel="canonical" href="http://yoursite.com/2019/09/11/随笔-钙钛矿材料电磁性能一般计算方式/">
 
 
 <script id="page-configurations">
@@ -206,7 +208,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/11/随笔~钙钛矿材料电磁性能一般计算方式/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/11/随笔-钙钛矿材料电磁性能一般计算方式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Rin G">
@@ -234,11 +236,19 @@
                 
               
 
-              <time title="創建時間：2019-09-11 00:00:00 / 修改時間：19:28:51" itemprop="dateCreated datePublished" datetime="2019-09-11T00:00:00+08:00">2019-09-11</time>
+              <time title="創建時間：2019-09-11 00:00:00" itemprop="dateCreated datePublished" datetime="2019-09-11T00:00:00+08:00">2019-09-11</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2019-09-16 21:04:52" itemprop="dateModified" datetime="2019-09-16T21:04:52+08:00">2019-09-16</time>
+              </span>
             
           
 
@@ -259,7 +269,7 @@
 <p>VASP计算基本输入文件：<code>INCAR</code>  <code>KPOINTS</code>  <code>POTCAR</code>  <code>POSCAR</code></p>
 <p>计算基本流程：结构优化（晶格常数A）–  原子弛豫（各原子坐标）–  静态计算scf  – 态密度dos<br>分别简写为：    opt-isif3   –  opt-isif2  –  scf  –  dos</p>
 <h1 id="钙钛矿材料电磁性能计算操作流程"><a href="#钙钛矿材料电磁性能计算操作流程" class="headerlink" title="钙钛矿材料电磁性能计算操作流程"></a>钙钛矿材料电磁性能计算操作流程</h1><p> 建立某种材料的文件夹–建立磁构型的文件夹–建立计算方式的文件夹–建立各计算流程文件夹</p>
-<p>[themes/next/source/images/ruler.jpg]</p>
+<p><img src="/images/2.jpg" alt></p>
 <h1 id="基本输入文件参数"><a href="#基本输入文件参数" class="headerlink" title="基本输入文件参数"></a>基本输入文件参数</h1><p>例：<br>INCAR：<br><code>system =LaMn3Rh4O12</code><br><code>ISTART= 0</code><br><code>ICHARG= 2</code><br><code>PREC = high #cutoff + wrap around errors.</code><br><code>IBRION= 2 #conj. grad. relaxation.</code><br><code>NSW=551 #number of ionic steps taken in minimization. Make it odd.</code><br><code>ENCUT=450.000 #cutoff</code><br><code>EDIFF=1.0e-04</code><br><code>EDIFFG=-0.05</code><br><code>ISIF=3</code><br><code>ISMEAR= 0  #BZ integration method (for relaxation runs).</code><br><code>SIGMA= 0.2</code><br><code>LWAVE = .FALSE.</code><br><code>LCHARG = .FALSE.</code><br><code>LBERRY = .FALSE.</code><br><code>#ISYM= 0</code><br><code>#IALGO= 48</code><br><code>POTIM= 0.2</code><br><code>#ALGO = Normal</code><br><code>#LREAL= FALSE</code><br><code>LREAL= Auto</code><br><code>#NELM= 850</code><br><code>MAGMOM=2*0 6*6 8*6 24*0</code><br><code>#VOSKOWN= 1</code><br><code>#LORBIT = 11  #For LDOS calculation</code><br><code>#ICHARG = 11</code><br><code>ISPIN= 2</code><br><code>#LDAU= .TRUE.</code><br><code>#LDAUL= -1 2 2 -1</code><br><code>#LDAUU= 0 4.7 3.7 0</code><br><code>#LDAUJ= 0 0.7 0.7 0</code><br><code>#LDAUPRINT= 2</code><br><code>#LMAXMIX= 4</code><br><code>#LPARD= .TRUE.</code><br><code>#NBMOD= -3</code><br><code>#EINT= -0.5</code><br><code>NCORE=4</code></p>
 <p> KPOINTS:<br> <code>LaMn3Rh4O12</code><br><code>0</code><br><code>Monkhorest-Pack</code><br><code>7 7 7</code><br><code>0 0 0</code></p>
 <p>POSCAR:<br>原子坐标文件，使用MS生成</p>
@@ -285,7 +295,7 @@
     <strong>博主： </strong>Rin G</li>
   <li class="post-copyright-link">
     <strong>文章連結：</strong>
-    <a href="http://yoursite.com/2019/09/11/随笔~钙钛矿材料电磁性能一般计算方式/" title="随笔~钙钛矿材料电磁性能一般计算方式">http://yoursite.com/2019/09/11/随笔~钙钛矿材料电磁性能一般计算方式/</a>
+    <a href="http://yoursite.com/2019/09/11/随笔-钙钛矿材料电磁性能一般计算方式/" title="随笔~钙钛矿材料电磁性能一般计算方式">http://yoursite.com/2019/09/11/随笔-钙钛矿材料电磁性能一般计算方式/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！</li>
@@ -301,8 +311,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/09/09/随笔~Markdown编辑器的一些使用方式/" rel="next" title="随笔~Markdown编辑器的一些使用方式（hexo+nexT)">
-                  <i class="fa fa-chevron-left"></i> 随笔~Markdown编辑器的一些使用方式（hexo+nexT)
+                <a href="/2019/09/11/随笔~PS vite破解/" rel="next" title="随笔~PS vite破解">
+                  <i class="fa fa-chevron-left"></i> 随笔~PS vite破解
                 </a>
               
             </div>
@@ -311,8 +321,8 @@
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/2019/09/11/随笔~PS vite破解/" rel="prev" title="随笔~PS vite破解">
-                  随笔~PS vite破解 <i class="fa fa-chevron-right"></i>
+                <a href="/2019/09/11/教程~从零开始组装Vasp服务器/" rel="prev" title="教程~从零开始组装Vasp服务器">
+                  教程~从零开始组装Vasp服务器 <i class="fa fa-chevron-right"></i>
                 </a>
               
             </div>
@@ -369,9 +379,7 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image"
-      src="/images/avatar.jpg"
-      alt="Rin G">
+    <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Rin G">
   <p class="site-author-name" itemprop="name">Rin G</p>
   <div class="site-description" itemprop="description">希望与绝望的相抵，是正负平衡</div>
 </div>
