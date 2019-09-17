@@ -62,12 +62,24 @@
 <meta property="og:site_name" content="君の影 星のように">
 <meta property="og:description" content="钙钛矿材料电磁性能一般计算方式我们计算钙钛矿电磁性能的时候一般通过VASP软件包完成，由于作者本人才疏学浅，故本文着重探讨计算的操作方面，对相关原理和基本理论不做详细解释。 计算方式分类： GGA 和 GGA+U 体系结构分类：Fim（亚铁磁）  Fm（铁磁）  AFM-（反铁磁）包括：A-（A型反铁磁） B-（B型反铁磁） C-（C型反铁磁） G-（G型反铁磁） VASP计算基本输入文件：INC">
 <meta property="og:locale" content="zh-HK">
-<meta property="og:image" content="http://yoursite.com/images/2.jpg">
-<meta property="og:updated_time" content="2019-09-16T13:30:03.386Z">
+<meta property="og:image" content="http://yoursite.com/images/1.png">
+<meta property="og:image" content="http://yoursite.com/images/2.png">
+<meta property="og:image" content="http://yoursite.com/images/3.png">
+<meta property="og:image" content="http://yoursite.com/images/4.png">
+<meta property="og:image" content="http://yoursite.com/images/5.png">
+<meta property="og:image" content="http://yoursite.com/images/6.png">
+<meta property="og:image" content="http://yoursite.com/images/7.png">
+<meta property="og:image" content="http://yoursite.com/images/8.png">
+<meta property="og:image" content="http://yoursite.com/images/9.png">
+<meta property="og:image" content="http://yoursite.com/images/10.png">
+<meta property="og:image" content="http://yoursite.com/images/11.png">
+<meta property="og:image" content="http://yoursite.com/images/12.png">
+<meta property="og:image" content="http://yoursite.com/images/13.png">
+<meta property="og:updated_time" content="2019-09-17T09:57:44.546Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="随笔~钙钛矿材料电磁性能一般计算方式">
 <meta name="twitter:description" content="钙钛矿材料电磁性能一般计算方式我们计算钙钛矿电磁性能的时候一般通过VASP软件包完成，由于作者本人才疏学浅，故本文着重探讨计算的操作方面，对相关原理和基本理论不做详细解释。 计算方式分类： GGA 和 GGA+U 体系结构分类：Fim（亚铁磁）  Fm（铁磁）  AFM-（反铁磁）包括：A-（A型反铁磁） B-（B型反铁磁） C-（C型反铁磁） G-（G型反铁磁） VASP计算基本输入文件：INC">
-<meta name="twitter:image" content="http://yoursite.com/images/2.jpg">
+<meta name="twitter:image" content="http://yoursite.com/images/1.png">
   <link rel="canonical" href="http://yoursite.com/2019/09/16/随笔-钙钛矿材料电磁性能一般计算方式/">
 
 
@@ -236,11 +248,19 @@
                 
               
 
-              <time title="創建時間：2019-09-16 00:00:00 / 修改時間：21:30:03" itemprop="dateCreated datePublished" datetime="2019-09-16T00:00:00+08:00">2019-09-16</time>
+              <time title="創建時間：2019-09-16 00:00:00" itemprop="dateCreated datePublished" datetime="2019-09-16T00:00:00+08:00">2019-09-16</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2019-09-17 17:57:44" itemprop="dateModified" datetime="2019-09-17T17:57:44+08:00">2019-09-17</time>
+              </span>
             
           
 
@@ -261,7 +281,6 @@
 <p>VASP计算基本输入文件：<code>INCAR</code>  <code>KPOINTS</code>  <code>POTCAR</code>  <code>POSCAR</code></p>
 <p>计算基本流程：结构优化（晶格常数A）–  原子弛豫（各原子坐标）–  静态计算scf  – 态密度dos<br>分别简写为：    opt-isif3   –  opt-isif2  –  scf  –  dos</p>
 <h1 id="钙钛矿材料电磁性能计算操作流程"><a href="#钙钛矿材料电磁性能计算操作流程" class="headerlink" title="钙钛矿材料电磁性能计算操作流程"></a>钙钛矿材料电磁性能计算操作流程</h1><p> 建立某种材料的文件夹–建立磁构型的文件夹–建立计算方式的文件夹–建立各计算流程文件夹</p>
-<p><img src="/images/2.jpg" alt></p>
 <h1 id="基本输入文件参数"><a href="#基本输入文件参数" class="headerlink" title="基本输入文件参数"></a>基本输入文件参数</h1><p>例：<br>INCAR：<br><code>system =LaMn3Rh4O12</code><br><code>ISTART= 0</code><br><code>ICHARG= 2</code><br><code>PREC = high #cutoff + wrap around errors.</code><br><code>IBRION= 2 #conj. grad. relaxation.</code><br><code>NSW=551 #number of ionic steps taken in minimization. Make it odd.</code><br><code>ENCUT=450.000 #cutoff</code><br><code>EDIFF=1.0e-04</code><br><code>EDIFFG=-0.05</code><br><code>ISIF=3</code><br><code>ISMEAR= 0  #BZ integration method (for relaxation runs).</code><br><code>SIGMA= 0.2</code><br><code>LWAVE = .FALSE.</code><br><code>LCHARG = .FALSE.</code><br><code>LBERRY = .FALSE.</code><br><code>#ISYM= 0</code><br><code>#IALGO= 48</code><br><code>POTIM= 0.2</code><br><code>#ALGO = Normal</code><br><code>#LREAL= FALSE</code><br><code>LREAL= Auto</code><br><code>#NELM= 850</code><br><code>MAGMOM=2*0 6*6 8*6 24*0</code><br><code>#VOSKOWN= 1</code><br><code>#LORBIT = 11  #For LDOS calculation</code><br><code>#ICHARG = 11</code><br><code>ISPIN= 2</code><br><code>#LDAU= .TRUE.</code><br><code>#LDAUL= -1 2 2 -1</code><br><code>#LDAUU= 0 4.7 3.7 0</code><br><code>#LDAUJ= 0 0.7 0.7 0</code><br><code>#LDAUPRINT= 2</code><br><code>#LMAXMIX= 4</code><br><code>#LPARD= .TRUE.</code><br><code>#NBMOD= -3</code><br><code>#EINT= -0.5</code><br><code>NCORE=4</code></p>
 <p> KPOINTS:<br> <code>LaMn3Rh4O12</code><br><code>0</code><br><code>Monkhorest-Pack</code><br><code>7 7 7</code><br><code>0 0 0</code></p>
 <p>POSCAR:<br>原子坐标文件，使用MS生成</p>
@@ -271,6 +290,34 @@
 <p>3.将opt-isif2文件夹中所有文件拷入scf文件夹中，修改参数<br>sed -i ‘s/ISIF=2/#ISIF=2/g’ INCAR<br>sed -i ‘s/EDIFFG=-0.01/#EDIFFG=-0.01/g’ INCAR<br>sed -i ‘s/#LORBIT = 11/LORBIT = 11/g’ INCAR<br>sed -i ‘s/POTIM= 0.2/#POTIM= 0.2/g’ INCAR<br>sed -i ‘s/NSW=551/NSW=0/g’ INCAR<br>sed -i ‘s/IBRION= 2/#IBRION= 2/g’ INCAR<br>sed -i ‘s/LWAVE = .FALSE./LWAVE = .TURE./g’ INCAR<br>sed -i ‘s/LCHARG = .FALSE./LCHARG = .TURE./g’ INCAR<br>sed -i ‘s/ISMEAR= 0/ISMEAR= -5/g’ INCAR<br>sed -i ‘s/SIGMA= 0.2/#SIGMA= 0.2/g’ INCAR<br>将vasp.pbs文件导入，使用qsub vasp.pbs 提交任务。</p>
 <p>4.将scf文件夹中所有文件拷入scf文件夹中，修改参数<br>sed -i ‘s/7 7 7/10 10 10/g’ KPOINTS<br>sed -i ‘s/ISTART= 0/ISTART= 1/g’ INCAR<br>sed -i ‘s/ICHARG= 2/ICHARG= 11/g’ INCAR<br>将vasp.pbs文件导入，使用qsub vasp.pbs 提交任务。</p>
 <h2 id="GGA-U"><a href="#GGA-U" class="headerlink" title="GGA+U"></a>GGA+U</h2><p>操作方式类似</p>
+<h1 id="本人所研究体系LaMn3Rh4O12详细计算过程"><a href="#本人所研究体系LaMn3Rh4O12详细计算过程" class="headerlink" title="本人所研究体系LaMn3Rh4O12详细计算过程"></a>本人所研究体系LaMn3Rh4O12详细计算过程</h1><p>根据论文LaMn3Rh4O12: An Antiferromagnetic Quadruple Perovskite Synthesized at High Pressure， </p>
+<p>LaMn3Rh4O12为四层钙钛矿结构，而我想要研究其磁性质，在整个体系中只有Mn和Rh对体系总体磁矩（磁性质）有影响，故需要考虑Mn和Rh的原子磁矩（Mn和Rh原子核外电子之间会有相互影响）。此处，我在画出晶体模型后我再详细解释！！</p>
+<h2 id="进行计算的第一步就是画出晶体结构3D图"><a href="#进行计算的第一步就是画出晶体结构3D图" class="headerlink" title="进行计算的第一步就是画出晶体结构3D图"></a>进行计算的第一步就是画出晶体结构3D图</h2><p>我们所使用的软件为MS（Diamond也可以）。</p>
+<ol>
+<li><p>打开软件，新建项目，最好保存为你所需计算的体系的名称，以后所有计算所需的不同体系结构（铁磁，反铁磁等）都保存在这个项目里。<br><img src="/images/1.png" alt></p>
+</li>
+<li><p>然后新建文档和3D原子结构<br><img src="/images/2.png" alt><br><img src="/images/3.png" alt></p>
+</li>
+<li><p>开始建立晶格体系（230种空间群意味着原子在三维空间中有230种不同的排列，通过原子在14种布拉维点阵中的对称排布构成了230种空间群，主要由晶体的对称性决定！）重点！！！ 计算的基础是晶体的对称性和周期性<br><img src="/images/4.png" alt></p>
+</li>
+<li><p>建立空间群</p>
+</li>
+</ol>
+<p>晶体的空间群和晶格常数信息均会在论文里给出（XRD扫描得到或中子衍射），一般来讲，不是做预测方面的，晶体结构都存在，若论文中未给出，可自行谷歌或参考晶体结构公开数据库<a href="http://www.crystallography.net/cod/search.html。">http://www.crystallography.net/cod/search.html。</a></p>
+<p>LaMn3Rh4O12的晶体结构数据在论文内已给出：<br><img src="/images/5.png" alt></p>
+<p>然后填入：<br><img src="/images/6.png" alt></p>
+<p>再切换到第二面，填入晶格常数<br><img src="/images/7.png" alt></p>
+<p>点击build或apply完成空间群的建立</p>
+<ol start="5">
+<li>填入原子</li>
+</ol>
+<p>同样的，原子位置信息会在论文内给出<br><img src="/images/8.png" alt></p>
+<p>在MS中操作，点击<br><img src="/images/9.png" alt></p>
+<p>然后填入原子<br><img src="/images/10.png" alt></p>
+<p>以此类推，填完所有原子之后，晶体模型就建立完成了。<br><img src="/images/11.png" alt></p>
+<ol start="5">
+<li>保存项目并导出cif格式的文件<br><img src="/images/12.png" alt><br><img src="/images/13.png" alt></li>
+</ol>
 
     </div>
 
@@ -360,7 +407,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#钙钛矿材料电磁性能一般计算方式"><span class="nav-number">1.</span> <span class="nav-text">钙钛矿材料电磁性能一般计算方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#钙钛矿材料电磁性能计算操作流程"><span class="nav-number">2.</span> <span class="nav-text">钙钛矿材料电磁性能计算操作流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本输入文件参数"><span class="nav-number">3.</span> <span class="nav-text">基本输入文件参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本操作流程"><span class="nav-number">4.</span> <span class="nav-text">基本操作流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GGA"><span class="nav-number">4.1.</span> <span class="nav-text">GGA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GGA-U"><span class="nav-number">4.2.</span> <span class="nav-text">GGA+U</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#钙钛矿材料电磁性能一般计算方式"><span class="nav-number">1.</span> <span class="nav-text">钙钛矿材料电磁性能一般计算方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#钙钛矿材料电磁性能计算操作流程"><span class="nav-number">2.</span> <span class="nav-text">钙钛矿材料电磁性能计算操作流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本输入文件参数"><span class="nav-number">3.</span> <span class="nav-text">基本输入文件参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本操作流程"><span class="nav-number">4.</span> <span class="nav-text">基本操作流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GGA"><span class="nav-number">4.1.</span> <span class="nav-text">GGA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GGA-U"><span class="nav-number">4.2.</span> <span class="nav-text">GGA+U</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#本人所研究体系LaMn3Rh4O12详细计算过程"><span class="nav-number">5.</span> <span class="nav-text">本人所研究体系LaMn3Rh4O12详细计算过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#进行计算的第一步就是画出晶体结构3D图"><span class="nav-number">5.1.</span> <span class="nav-text">进行计算的第一步就是画出晶体结构3D图</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
