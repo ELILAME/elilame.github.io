@@ -63,21 +63,21 @@
 <meta property="og:description" content="钙钛矿材料电磁性能一般计算方式我们计算钙钛矿电磁性能的时候一般通过VASP软件包完成，由于作者本人才疏学浅，故本文着重探讨计算的操作方面，对相关原理和基本理论不做详细解释。 计算方式分类： GGA 和 GGA+U 体系结构分类：Fim（亚铁磁）  Fm（铁磁）  AFM-（反铁磁）包括：A-（A型反铁磁） B-（B型反铁磁） C-（C型反铁磁） G-（G型反铁磁） VASP计算基本输入文件：INC">
 <meta property="og:locale" content="zh-HK">
 <meta property="og:image" content="http://yoursite.com/images/1.png">
-<meta property="og:image" content="http://yoursite.com/images/2.png">
-<meta property="og:image" content="http://yoursite.com/images/4.png">
-<meta property="og:image" content="http://yoursite.com/images/5.png">
-<meta property="og:image" content="http://yoursite.com/images/6.png">
-<meta property="og:image" content="http://yoursite.com/images/7.png">
-<meta property="og:image" content="http://yoursite.com/images/8.png">
-<meta property="og:image" content="http://yoursite.com/images/9.png">
-<meta property="og:image" content="http://yoursite.com/images/10.png">
-<meta property="og:image" content="http://yoursite.com/images/11.png">
-<meta property="og:image" content="http://yoursite.com/images/12.png">
-<meta property="og:image" content="http://yoursite.com/images/13.png">
-<meta property="og:image" content="http://yoursite.com/images/14.png">
-<meta property="og:image" content="http://yoursite.com/images/15.png">
-<meta property="og:image" content="http://yoursite.com/images/16.png">
-<meta property="og:updated_time" content="2019-09-17T13:19:42.008Z">
+<meta property="og:image" content="http://yoursite.com/images/2.PNG">
+<meta property="og:image" content="http://yoursite.com/images/4.PNG">
+<meta property="og:image" content="http://yoursite.com/images/5.PNG">
+<meta property="og:image" content="http://yoursite.com/images/6.PNG">
+<meta property="og:image" content="http://yoursite.com/images/7.PNG">
+<meta property="og:image" content="http://yoursite.com/images/8.PNG">
+<meta property="og:image" content="http://yoursite.com/images/9.PNG">
+<meta property="og:image" content="http://yoursite.com/images/10.PNG">
+<meta property="og:image" content="http://yoursite.com/images/11.PNG">
+<meta property="og:image" content="http://yoursite.com/images/12.PNG">
+<meta property="og:image" content="http://yoursite.com/images/13.PNG">
+<meta property="og:image" content="http://yoursite.com/images/14.PNG">
+<meta property="og:image" content="http://yoursite.com/images/15.PNG">
+<meta property="og:image" content="http://yoursite.com/images/16.PNG">
+<meta property="og:updated_time" content="2019-09-17T13:31:01.747Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="随笔~钙钛矿材料电磁性能一般计算方式">
 <meta name="twitter:description" content="钙钛矿材料电磁性能一般计算方式我们计算钙钛矿电磁性能的时候一般通过VASP软件包完成，由于作者本人才疏学浅，故本文着重探讨计算的操作方面，对相关原理和基本理论不做详细解释。 计算方式分类： GGA 和 GGA+U 体系结构分类：Fim（亚铁磁）  Fm（铁磁）  AFM-（反铁磁）包括：A-（A型反铁磁） B-（B型反铁磁） C-（C型反铁磁） G-（G型反铁磁） VASP计算基本输入文件：INC">
@@ -250,7 +250,7 @@
                 
               
 
-              <time title="創建時間：2019-09-17 00:00:00 / 修改時間：21:19:42" itemprop="dateCreated datePublished" datetime="2019-09-17T00:00:00+08:00">2019-09-17</time>
+              <time title="創建時間：2019-09-17 00:00:00 / 修改時間：21:31:01" itemprop="dateCreated datePublished" datetime="2019-09-17T00:00:00+08:00">2019-09-17</time>
             </span>
           
             
@@ -290,36 +290,36 @@
 <ol>
 <li><p>打开软件，新建项目，最好保存为你所需计算的体系的名称，以后所有计算所需的不同体系结构（铁磁，反铁磁等）都保存在这个项目里。<br><img src="/images/1.png" alt></p>
 </li>
-<li><p>然后新建文档和3D原子结构<br><img src="/images/2.png" alt></p>
+<li><p>然后新建文档和3D原子结构<br><img src="/images/2.PNG" alt></p>
 </li>
 </ol>
 <ol start="3">
-<li><p>开始建立晶格体系（230种空间群意味着原子在三维空间中有230种不同的排列，通过原子在14种布拉维点阵中的对称排布构成了230种空间群，主要由晶体的对称性决定！）重点！！！ 计算的基础是晶体的对称性和周期性<br><img src="/images/4.png" alt></p>
+<li><p>开始建立晶格体系（230种空间群意味着原子在三维空间中有230种不同的排列，通过原子在14种布拉维点阵中的对称排布构成了230种空间群，主要由晶体的对称性决定！）重点！！！ 计算的基础是晶体的对称性和周期性<br><img src="/images/4.PNG" alt></p>
 </li>
 <li><p>建立空间群</p>
 </li>
 </ol>
 <p>晶体的空间群和晶格常数信息均会在论文里给出（XRD扫描得到或中子衍射），一般来讲，不是做预测方面的，晶体结构都存在，若论文中未给出，可自行谷歌或参考晶体结构公开数据库<a href="http://www.crystallography.net/cod/search.html。">http://www.crystallography.net/cod/search.html。</a></p>
-<p>LaMn3Rh4O12的晶体结构数据在论文内已给出：<br><img src="/images/5.png" alt></p>
-<p>然后填入：<br><img src="/images/6.png" alt></p>
-<p>再切换到第二面，填入晶格常数<br><img src="/images/7.png" alt></p>
+<p>LaMn3Rh4O12的晶体结构数据在论文内已给出：<br><img src="/images/5.PNG" alt></p>
+<p>然后填入：<br><img src="/images/6.PNG" alt></p>
+<p>再切换到第二面，填入晶格常数<br><img src="/images/7.PNG" alt></p>
 <p>点击build或apply完成空间群的建立</p>
 <ol start="5">
 <li>填入原子</li>
 </ol>
-<p>同样的，原子位置信息会在论文内给出<br><img src="/images/8.png" alt></p>
-<p>在MS中操作，点击<br><img src="/images/9.png" alt></p>
-<p>然后填入原子<br><img src="/images/10.png" alt></p>
-<p>以此类推，填完所有原子之后，晶体模型就建立完成了。<br><img src="/images/11.png" alt></p>
+<p>同样的，原子位置信息会在论文内给出<br><img src="/images/8.PNG" alt></p>
+<p>在MS中操作，点击<br><img src="/images/9.PNG" alt></p>
+<p>然后填入原子<br><img src="/images/10.PNG" alt></p>
+<p>以此类推，填完所有原子之后，晶体模型就建立完成了。<br><img src="/images/11.PNG" alt></p>
 <ol start="5">
-<li>保存项目并导出cif格式的文件<br><img src="/images/12.png" alt><br><img src="/images/13.png" alt></li>
+<li>保存项目并导出cif格式的文件<br><img src="/images/12.PNG" alt><br><img src="/images/13.PNG" alt></li>
 </ol>
 <h2 id="第二步，将之前所创建的cif文件导入VESTA打开"><a href="#第二步，将之前所创建的cif文件导入VESTA打开" class="headerlink" title="第二步，将之前所创建的cif文件导入VESTA打开"></a>第二步，将之前所创建的cif文件导入VESTA打开</h2><ol>
-<li><p>拖拽cif文件到VESTA<br><img src="/images/14.png" alt></p>
+<li><p>拖拽cif文件到VESTA<br><img src="/images/14.PNG" alt></p>
 </li>
-<li><p>导出数据<br><img src="/images/15.png" alt></p>
+<li><p>导出数据<br><img src="/images/15.PNG" alt></p>
 </li>
-<li><p>命名为POSCAR，格式为vasp（POSCAR是保存原子位置和信息的文件，之后的vasp计算中会用到）<br><img src="/images/16.png" alt></p>
+<li><p>命名为POSCAR，格式为vasp（POSCAR是保存原子位置和信息的文件，之后的vasp计算中会用到）<br><img src="/images/16.PNG" alt></p>
 </li>
 <li><p>VAESTA完成</p>
 </li>
@@ -356,8 +356,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/09/14/随笔~短信电话轰炸/" rel="next" title="随笔~短信电话轰炸">
-                  <i class="fa fa-chevron-left"></i> 随笔~短信电话轰炸
+                <a href="/2019/09/14/随笔~美服iphone ID创建/" rel="next" title="随笔~美服iphone ID创建">
+                  <i class="fa fa-chevron-left"></i> 随笔~美服iphone ID创建
                 </a>
               
             </div>
