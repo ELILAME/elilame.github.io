@@ -55,17 +55,20 @@
   };
 </script>
 
-  <meta name="description" content="Something was encrypted, please enter password to read">
+  <meta name="description" content="基本步骤 使用kali系统  运行wifite  抓获握手包  使用aircrack -w 字典目录  破解文件   字典推荐使用kali自带的/usr/share/wordlist/rockyou.txt 这个字典如果跑不出来，放弃吧！！ 本人尝试破解了些许WiFi以下为登陆WiFi所用学号及密码（话说学校不知道怎么想的，用学号和密码当作上网登陆密码）： 1号学生 （支付宝登陆密码也是这个）学号">
 <meta property="og:type" content="article">
 <meta property="og:title" content="随笔~Aircrack实战经验">
 <meta property="og:url" content="http://yoursite.com/2019/09/13/随笔~Aircrack实战经验/index.html">
 <meta property="og:site_name" content="君の影 星のように">
-<meta property="og:description" content="Something was encrypted, please enter password to read">
+<meta property="og:description" content="基本步骤 使用kali系统  运行wifite  抓获握手包  使用aircrack -w 字典目录  破解文件   字典推荐使用kali自带的/usr/share/wordlist/rockyou.txt 这个字典如果跑不出来，放弃吧！！ 本人尝试破解了些许WiFi以下为登陆WiFi所用学号及密码（话说学校不知道怎么想的，用学号和密码当作上网登陆密码）： 1号学生 （支付宝登陆密码也是这个）学号">
 <meta property="og:locale" content="zh-HK">
-<meta property="og:updated_time" content="2019-09-17T11:25:15.022Z">
+<meta property="og:image" content="http://yoursite.com/images/chenchen.png">
+<meta property="og:image" content="http://yoursite.com/images/louxinyu.png">
+<meta property="og:updated_time" content="2019-09-17T11:27:47.706Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="随笔~Aircrack实战经验">
-<meta name="twitter:description" content="Something was encrypted, please enter password to read">
+<meta name="twitter:description" content="基本步骤 使用kali系统  运行wifite  抓获握手包  使用aircrack -w 字典目录  破解文件   字典推荐使用kali自带的/usr/share/wordlist/rockyou.txt 这个字典如果跑不出来，放弃吧！！ 本人尝试破解了些许WiFi以下为登陆WiFi所用学号及密码（话说学校不知道怎么想的，用学号和密码当作上网登陆密码）： 1号学生 （支付宝登陆密码也是这个）学号">
+<meta name="twitter:image" content="http://yoursite.com/images/chenchen.png">
   <link rel="canonical" href="http://yoursite.com/2019/09/13/随笔~Aircrack实战经验/">
 
 
@@ -245,7 +248,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2019-09-17 19:25:15" itemprop="dateModified" datetime="2019-09-17T19:25:15+08:00">2019-09-17</time>
+                <time title="修改時間：2019-09-17 19:27:47" itemprop="dateModified" datetime="2019-09-17T19:27:47+08:00">2019-09-17</time>
               </span>
             
           
@@ -261,19 +264,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <div id="hbe-security">
-  <div class="hbe-input-container">
-  <input type="password" class="hbe-form-control" id="pass" placeholder="Welcome to my blog, please enter password to read">
-    <label for="pass">Welcome to my blog, please enter password to read</label>
-    <div class="bottom-line"></div>
-  </div>
-</div>
-<div id="decryptionError" style="display: none;">Incorrect Password!</div>
-<div id="noContentError" style="display: none;">No content to display!</div>
-<div id="encrypt-blog" style="display:none">
-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
-</div>
-<script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
+        <h2 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h2><ol>
+<li><p>使用kali系统</p>
+</li>
+<li><p>运行<code>wifite</code></p>
+</li>
+<li><p>抓获握手包</p>
+</li>
+<li><p>使用<code>aircrack -w 字典目录  破解文件</code></p>
+</li>
+</ol>
+<p>字典推荐使用kali自带的/usr/share/wordlist/rockyou.txt</p>
+<p>这个字典如果跑不出来，放弃吧！！</p>
+<h1 id="本人尝试破解了些许WiFi"><a href="#本人尝试破解了些许WiFi" class="headerlink" title="本人尝试破解了些许WiFi"></a>本人尝试破解了些许WiFi</h1><p>以下为登陆WiFi所用学号及密码（话说学校不知道怎么想的，用学号和密码当作上网登陆密码）：</p>
+<p>1号学生 （支付宝登陆密码也是这个）<br>学号：2211805062  <code>@cmcc</code><br>密码：960814cc</p>
+<p><img src="/images/chenchen.png" alt></p>
+<p>2号学生   （未曾尝试）<br>学号：2221704088  <code>@cmcc</code><br>密码：19921206</p>
+<p><img src="/images/louxinyu.png" alt></p>
+
     </div>
 
     
@@ -366,6 +374,8 @@ U2FsdGVkX19IzjxOl6vQZKH5ahRgrfAZodAssARIAe55slC41bjt0G1nqvwsHkcIpvYTcVU45+KtnMUK
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本步骤"><span class="nav-number">1.</span> <span class="nav-text">基本步骤</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#本人尝试破解了些许WiFi"><span class="nav-number"></span> <span class="nav-text">本人尝试破解了些许WiFi</span></a></div>
+        
       </div>
       <!--/noindex-->
 
