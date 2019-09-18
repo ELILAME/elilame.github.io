@@ -78,7 +78,10 @@
 <meta property="og:image" content="http://yoursite.com/images/14.PNG">
 <meta property="og:image" content="http://yoursite.com/images/15.PNG">
 <meta property="og:image" content="http://yoursite.com/images/16.PNG">
-<meta property="og:updated_time" content="2019-09-17T13:44:48.580Z">
+<meta property="og:image" content="http://yoursite.com/images/17.PNG">
+<meta property="og:image" content="http://yoursite.com/images/18.PNG">
+<meta property="og:image" content="http://yoursite.com/images/19.PNG">
+<meta property="og:updated_time" content="2019-09-18T02:32:42.932Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="随笔~钙钛矿材料电磁性能一般计算方式">
 <meta name="twitter:description" content="钙钛矿材料电磁性能一般计算方式我们计算钙钛矿电磁性能的时候一般通过VASP软件包完成，由于作者本人才疏学浅，故本文着重探讨计算的操作方面，对相关原理和基本理论不做详细解释。 计算方式分类： GGA 和 GGA+U 体系结构分类：Fim（亚铁磁）  Fm（铁磁）  AFM-（反铁磁）包括：A-（A型反铁磁） B-（B型反铁磁） C-（C型反铁磁） G-（G型反铁磁） VASP计算基本输入文件：INC">
@@ -251,11 +254,19 @@
                 
               
 
-              <time title="創建時間：2019-09-17 00:00:00 / 修改時間：21:44:48" itemprop="dateCreated datePublished" datetime="2019-09-17T00:00:00+08:00">2019-09-17</time>
+              <time title="創建時間：2019-09-17 00:00:00" itemprop="dateCreated datePublished" datetime="2019-09-17T00:00:00+08:00">2019-09-17</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2019-09-18 10:32:42" itemprop="dateModified" datetime="2019-09-18T10:32:42+08:00">2019-09-18</time>
+              </span>
             
           
 
@@ -323,7 +334,47 @@
 <li><p>VAESTA完成</p>
 </li>
 </ol>
-<h2 id="第三步，连接服务器，开始进行计算"><a href="#第三步，连接服务器，开始进行计算" class="headerlink" title="第三步，连接服务器，开始进行计算"></a>第三步，连接服务器，开始进行计算</h2>
+<h2 id="第三步，连接服务器，开始进行计算"><a href="#第三步，连接服务器，开始进行计算" class="headerlink" title="第三步，连接服务器，开始进行计算"></a>第三步，连接服务器，开始进行计算</h2><ol>
+<li><p>使用Xshell新建会话</p>
+</li>
+<li><p>填入服务器IP地址以及登陆所需用户名和密码<br><img src="/images/17.PNG" alt><br><img src="/images/18.PNG" alt></p>
+</li>
+<li><p>连接上服务器之后 在/home/hpli目录下新建一个属于你自己的目录，如：/home/hpli/gezhizhong</p>
+</li>
+<li><p>接着将你所计算的所有体系都放在这个文件夹下，如：/home/hpli/gezhizhong/LaMn3Rh4O12，Pb2FeOsO6等等</p>
+</li>
+<li><p>最后根据你所需计算的体系不同的磁性结构进一步划分并建立文件夹，如：/home/hpli/gezhizhong/LaMn3Rh4O12/Fm，Fim，A-，B-，G-等等</p>
+</li>
+</ol>
+<h2 id="第四步，vasp计算基本流程"><a href="#第四步，vasp计算基本流程" class="headerlink" title="第四步，vasp计算基本流程"></a>第四步，vasp计算基本流程</h2><ol>
+<li><p>vasp所需4个基本输入文件（缺一不可）：INCAR，KPOINTS，POSCAR，POTCAR</p>
+</li>
+<li><p>vasp一般有两种计算模式，GGA和GGA+U</p>
+</li>
+<li><p>在不同的磁性结构文件夹下进一步根据计算方式划分并建立文件夹，如：/home/hpli/gezhizhong/LaMn3Rh4O12/Fm/GGA，GGA+U</p>
+</li>
+<li><p>请将INCAR，KPOINTS，POSCAR，POTCAR 拷入GGA或者GGA+U文件夹内，然后运行一键运行脚本auto-gga或者auto-gga+u，完成后应该如：/home/hpli/gezhizhong/LaMn3Rh4O12/Fm/GGA/opt-isif3，opt-isif2，scf，dos<br><img src="/images/19.PNG" alt></p>
+</li>
+</ol>
+<h2 id="INCAR，KPOINTS，POSCAR，POTCAR详解"><a href="#INCAR，KPOINTS，POSCAR，POTCAR详解" class="headerlink" title="INCAR，KPOINTS，POSCAR，POTCAR详解"></a>INCAR，KPOINTS，POSCAR，POTCAR详解</h2><ol>
+<li>POTACR</li>
+</ol>
+<p>赝势文件，在~/POT/PAW_PBE/  内可以找到所有原子所需赝势（！注意，赝势文件集成的顺序需要与结构文件，即原子的顺序一一对应），使用以下命令进行集成：</p>
+<p><code>cat file1 file2 file3… &gt; POTCAR</code></p>
+<p>例：<code>cat La/POTACR Mn/POTCAR Rh/POTCAT O/POTCAR &gt; POTCAR</code></p>
+<ol start="2">
+<li>POSCAR</li>
+</ol>
+<p>之前所建立的晶胞结构所导出的</p>
+<ol start="3">
+<li>KPOINTS</li>
+</ol>
+<p><code>LaMn3Rh4O12</code>             名字（随便写，不影响计算）<br><code>0</code>                                   自动产生K点<br><code>Monkhorest-Pack</code>         以M-P方式来自动生成K点<br><code>7 7 7</code>                             确定沿倒格子各方向上网格点的数目<br><code>0 0 0</code>                             对所按网格进行分割产生的K点进行平移的量</p>
+<ol start="4">
+<li>INCAR</li>
+</ol>
+<p><code>system =LaMn3Rh4O12</code>     #名字（随便写，不影响计算）<br><code>ISTART= 0</code>              #0：全新一次计算    #1: 读WAVECAR<br><code>ICHARG= 2</code>            #2:从原子中读charge（初猜）  #1: 读CHGCAR<br><code>PREC = high</code>           #计算精度<br><code>IBRION= 2</code><br><code>NSW=551</code>              #步数<br><code>ENCUT=450.000</code>   #截断势能<br><code>EDIFF=1.0e-04</code>        #电子迭代收敛标准<br><code>EDIFFG=-0.05</code>         #原子弛豫收敛标准<br><code>ISIF=3</code>                     #3：计算应力且对结构进行优化   #2：原子弛豫<br><code>ISMEAR= 0</code>            #ISMEAR和SIGMA为一对，进行结构优化和原子弛豫时，取<code>0</code>和<code>0.2</code> ，scf 和dos 计算时使用<code>-5</code>，注释掉SIGMA<br><code>SIGMA= 0.2</code><br><code>LWAVE = .FALSE.</code>    #计算平面波，计算scf时打开，与LCHARG为一对<br><code>LCHARG = .FALSE.</code><br><code>LBERRY = .FALSE.</code><br><code>#ISYM= 0</code><br><code>#IALGO= 48</code><br><code>POTIM= 0.2</code>             #原子每步移动大小<br><code>#ALGO = Normal</code><br><code>#LREAL= FALSE</code><br><code>LREAL= Auto</code>            #确定投影算法是否在实空间或倒空间计算<br><code>#NELM= 850</code><br><code>MAGMOM=2*0 6*6 8*6 24*0</code>      #原子数*原子理论磁矩（根据d,f轨道得到）<br><code>#VOSKOWN= 1</code><br><code>#LORBIT = 11  #For LDOS calculation</code><br><code>#ICHARG = 11</code><br><code>ISPIN= 2</code>                       #自旋极化(一般都须打开)<br><code>#LDAU= .TRUE.</code>            #控制是否加U<br><code>#LDAUL= -1 2 2 -1</code>       #-1：s,p 轨道   #2：d,f 轨道<br><code>#LDAUU= 0 4.7 3.7 0</code>   #LDAUU和LDAUJ为一对，差值为U值<br><code>#LDAUJ= 0 0.7 0.7 0</code><br><code>#LDAUPRINT= 2</code>           #固定<br><code>#LMAXMIX= 4</code>              #固定<br><code>#LPARD= .TRUE.</code><br><code>#NBMOD= -3</code><br><code>#EINT= -0.5</code><br><code>NCORE=4</code></p>
+<h2 id="基本完成vasp计算，使用P4vasp处理数据，用origin绘图"><a href="#基本完成vasp计算，使用P4vasp处理数据，用origin绘图" class="headerlink" title="基本完成vasp计算，使用P4vasp处理数据，用origin绘图"></a>基本完成vasp计算，使用P4vasp处理数据，用origin绘图</h2>
     </div>
 
     
@@ -355,8 +406,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/09/14/随笔~短信电话轰炸/" rel="next" title="随笔~短信电话">
-                  <i class="fa fa-chevron-left"></i> 随笔~短信电话
+                <a href="/2019/09/14/随笔~Medusa对服务器暴力字典攻击/" rel="next" title="随笔~Medusa">
+                  <i class="fa fa-chevron-left"></i> 随笔~Medusa
                 </a>
               
             </div>
@@ -412,7 +463,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#钙钛矿材料电磁性能一般计算方式"><span class="nav-number">1.</span> <span class="nav-text">钙钛矿材料电磁性能一般计算方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#钙钛矿材料电磁性能计算操作流程"><span class="nav-number">2.</span> <span class="nav-text">钙钛矿材料电磁性能计算操作流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本输入文件参数"><span class="nav-number">3.</span> <span class="nav-text">基本输入文件参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本操作流程"><span class="nav-number">4.</span> <span class="nav-text">基本操作流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GGA"><span class="nav-number">4.1.</span> <span class="nav-text">GGA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GGA-U"><span class="nav-number">4.2.</span> <span class="nav-text">GGA+U</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#本人所研究体系LaMn3Rh4O12详细计算过程"><span class="nav-number">5.</span> <span class="nav-text">本人所研究体系LaMn3Rh4O12详细计算过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#进行计算的第一步就是画出晶体结构3D图"><span class="nav-number">5.1.</span> <span class="nav-text">进行计算的第一步就是画出晶体结构3D图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二步，将之前所创建的cif文件导入VESTA打开"><span class="nav-number">5.2.</span> <span class="nav-text">第二步，将之前所创建的cif文件导入VESTA打开</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三步，连接服务器，开始进行计算"><span class="nav-number">5.3.</span> <span class="nav-text">第三步，连接服务器，开始进行计算</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#钙钛矿材料电磁性能一般计算方式"><span class="nav-number">1.</span> <span class="nav-text">钙钛矿材料电磁性能一般计算方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#钙钛矿材料电磁性能计算操作流程"><span class="nav-number">2.</span> <span class="nav-text">钙钛矿材料电磁性能计算操作流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本输入文件参数"><span class="nav-number">3.</span> <span class="nav-text">基本输入文件参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本操作流程"><span class="nav-number">4.</span> <span class="nav-text">基本操作流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GGA"><span class="nav-number">4.1.</span> <span class="nav-text">GGA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GGA-U"><span class="nav-number">4.2.</span> <span class="nav-text">GGA+U</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#本人所研究体系LaMn3Rh4O12详细计算过程"><span class="nav-number">5.</span> <span class="nav-text">本人所研究体系LaMn3Rh4O12详细计算过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#进行计算的第一步就是画出晶体结构3D图"><span class="nav-number">5.1.</span> <span class="nav-text">进行计算的第一步就是画出晶体结构3D图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二步，将之前所创建的cif文件导入VESTA打开"><span class="nav-number">5.2.</span> <span class="nav-text">第二步，将之前所创建的cif文件导入VESTA打开</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三步，连接服务器，开始进行计算"><span class="nav-number">5.3.</span> <span class="nav-text">第三步，连接服务器，开始进行计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四步，vasp计算基本流程"><span class="nav-number">5.4.</span> <span class="nav-text">第四步，vasp计算基本流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#INCAR，KPOINTS，POSCAR，POTCAR详解"><span class="nav-number">5.5.</span> <span class="nav-text">INCAR，KPOINTS，POSCAR，POTCAR详解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本完成vasp计算，使用P4vasp处理数据，用origin绘图"><span class="nav-number">5.6.</span> <span class="nav-text">基本完成vasp计算，使用P4vasp处理数据，用origin绘图</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
