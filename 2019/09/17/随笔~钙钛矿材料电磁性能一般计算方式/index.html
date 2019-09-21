@@ -88,7 +88,7 @@
 <meta property="og:image" content="http://yoursite.com/images/22.PNG">
 <meta property="og:image" content="http://yoursite.com/images/23.PNG">
 <meta property="og:image" content="http://yoursite.com/images/24.PNG">
-<meta property="og:updated_time" content="2019-09-21T08:42:21.039Z">
+<meta property="og:updated_time" content="2019-09-21T08:49:44.817Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="随笔~钙钛矿材料电磁性能一般计算方式">
 <meta name="twitter:description" content="钙钛矿材料电磁性能一般计算方式我们计算钙钛矿电磁性能的时候一般通过VASP软件包完成，由于作者本人才疏学浅，故本文着重探讨计算的操作方面，对相关原理和基本理论不做详细解释。 计算方式分类： GGA 和 GGA+U 体系结构分类：Fim（亚铁磁）  Fm（铁磁）  AFM-（反铁磁）包括：A-（A型反铁磁） B-（B型反铁磁） C-（C型反铁磁） G-（G型反铁磁） VASP计算基本输入文件：INC">
@@ -272,7 +272,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2019-09-21 16:42:21" itemprop="dateModified" datetime="2019-09-21T16:42:21+08:00">2019-09-21</time>
+                <time title="修改時間：2019-09-21 16:49:44" itemprop="dateModified" datetime="2019-09-21T16:49:44+08:00">2019-09-21</time>
               </span>
             
           
@@ -308,12 +308,11 @@
 <li><p>将scf文件夹中所有文件拷入dos文件夹中，修改参数<br>sed -i ‘s/7 7 7/10 10 10/g’ KPOINTS<br>sed -i ‘s/ISTART= 0/ISTART= 1/g’ INCAR<br>sed -i ‘s/ICHARG= 2/ICHARG= 11/g’ INCAR<br>将vasp.pbs文件导入，使用qsub vasp.pbs 提交任务。</p>
 </li>
 <li><p>将scf文件夹中所有文件拷入bands文件夹中，修改参数<br>sed -i ‘s/ISMEAR= -5/ISMEAR= 0/g’ INCAR<br>sed -i ‘s/#SIGMA= 0.2/SIGMA= 0.2/g’ INCAR<br>sed -i ‘s/ISTART= 0/ISTART= 1/g’ INCAR<br>sed -i ‘s/ICHARG= 2/ICHARG= 11/g’ INCAR</p>
+<p> 还需要修改KPOINTS文件，原本的KPOINTS如下：<br><code>LaMn3Rh4O12</code>             名字（随便写，不影响计算）<br><code>0</code>                                   自动产生K点<br><code>Monkhorest-Pack</code>         以M-P方式来自动生成K点<br><code>7 7 7</code>                             确定沿倒格子各方向上网格点的数目<br><code>0 0 0</code>                             对所按网格进行分割产生的K点进行平移的量</p>
+<p> 将其修改为：<br><code>LaMn3Rh4O12</code>             名字（随便写，不影响计算）<br><code>10</code>                                 产生10个K点<br><code>Line-mode</code>                   使用直线取K点模式<br><code>rec</code><br><code>10 10 10</code><br><code>.0 0.5 0.0  !F</code>                  取K点的路径（可用MS构建）<br><code>.0 0.5 0.0  !F</code>                  ！这里最好三维方向都取到<br><code>0.0 0.5 0.5  !Q</code>               ！首尾相连，形成回路<br><code>0.0 0.5 0.5  !Q</code><br><code>0.5 0.5 0.5  !M</code><br><code>0.5 0.5 0.5  !M</code><br><code>0.0 0.0 0.0  !G</code></p>
+<p> 这里的路径可以自己修改到认为合适<br><img src="/images/25.PNG" alt><br><img src="/images/26.PNG" alt></p>
 </li>
 </ol>
-<p>修改KPOINTS文件：<br><code>LaMn3Rh4O12</code>             名字（随便写，不影响计算）<br><code>0</code>                                   自动产生K点<br><code>Monkhorest-Pack</code>         以M-P方式来自动生成K点<br><code>7 7 7</code>                             确定沿倒格子各方向上网格点的数目<br><code>0 0 0</code>                             对所按网格进行分割产生的K点进行平移的量</p>
-<p>修改为：<br><code>LaMn3Rh4O12</code>             名字（随便写，不影响计算）<br><code>10</code>                                 产生10个K点<br><code>Line-mode</code>                   使用直线取K点模式<br><code>rec</code><br><code>10 10 10</code><br><code>.0 0.5 0.0  !F</code>                  取K点的路径（可用MS构建）<br><code>.0 0.5 0.0  !F</code>                  ！这里最好三维方向都取到<br><code>0.0 0.5 0.5  !Q</code>               ！首尾相连，形成回路<br><code>0.0 0.5 0.5  !Q</code><br><code>0.5 0.5 0.5  !M</code><br><code>0.5 0.5 0.5  !M</code><br><code>0.0 0.0 0.0  !G</code></p>
-<p><img src="/images/25.PNG" alt></p>
-<p>这里的路径可以自己修改到认为合适<br><img src="/images/26.PNG" alt></p>
 <h2 id="GGA-U"><a href="#GGA-U" class="headerlink" title="GGA+U"></a>GGA+U</h2><p>操作方式同上，只需打开加U开关（INCAR中参数）<br><code>#LDAU= .TRUE.</code>            #控制是否加U<br><code>#LDAUL= -1 2 2 -1</code>       #-1：s,p 轨道   #2：d,f 轨道<br><code>#LDAUU= 0 4.7 3.7 0</code>   #LDAUU和LDAUJ为一对，差值为U值<br><code>#LDAUJ= 0 0.7 0.7 0</code><br><code>#LDAUPRINT= 2</code>           #固定<br><code>#LMAXMIX= 4</code>              #固定</p>
 <p>将以上注释掉的参数 取消注释（删除#）–即在计算中加入了U值</p>
 <h1 id="本人所研究体系LaMn3Rh4O12详细计算过程"><a href="#本人所研究体系LaMn3Rh4O12详细计算过程" class="headerlink" title="本人所研究体系LaMn3Rh4O12详细计算过程"></a>本人所研究体系LaMn3Rh4O12详细计算过程</h1><p>根据论文LaMn3Rh4O12: An Antiferromagnetic Quadruple Perovskite Synthesized at High Pressure， </p>

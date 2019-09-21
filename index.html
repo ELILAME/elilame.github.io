@@ -244,7 +244,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2019-09-21 16:42:21" itemprop="dateModified" datetime="2019-09-21T16:42:21+08:00">2019-09-21</time>
+                <time title="修改時間：2019-09-21 16:49:44" itemprop="dateModified" datetime="2019-09-21T16:49:44+08:00">2019-09-21</time>
               </span>
             
           
@@ -280,12 +280,11 @@
 <li><p>将scf文件夹中所有文件拷入dos文件夹中，修改参数<br>sed -i ‘s/7 7 7/10 10 10/g’ KPOINTS<br>sed -i ‘s/ISTART= 0/ISTART= 1/g’ INCAR<br>sed -i ‘s/ICHARG= 2/ICHARG= 11/g’ INCAR<br>将vasp.pbs文件导入，使用qsub vasp.pbs 提交任务。</p>
 </li>
 <li><p>将scf文件夹中所有文件拷入bands文件夹中，修改参数<br>sed -i ‘s/ISMEAR= -5/ISMEAR= 0/g’ INCAR<br>sed -i ‘s/#SIGMA= 0.2/SIGMA= 0.2/g’ INCAR<br>sed -i ‘s/ISTART= 0/ISTART= 1/g’ INCAR<br>sed -i ‘s/ICHARG= 2/ICHARG= 11/g’ INCAR</p>
+<p> 还需要修改KPOINTS文件，原本的KPOINTS如下：<br><code>LaMn3Rh4O12</code>             名字（随便写，不影响计算）<br><code>0</code>                                   自动产生K点<br><code>Monkhorest-Pack</code>         以M-P方式来自动生成K点<br><code>7 7 7</code>                             确定沿倒格子各方向上网格点的数目<br><code>0 0 0</code>                             对所按网格进行分割产生的K点进行平移的量</p>
+<p> 将其修改为：<br><code>LaMn3Rh4O12</code>             名字（随便写，不影响计算）<br><code>10</code>                                 产生10个K点<br><code>Line-mode</code>                   使用直线取K点模式<br><code>rec</code><br><code>10 10 10</code><br><code>.0 0.5 0.0  !F</code>                  取K点的路径（可用MS构建）<br><code>.0 0.5 0.0  !F</code>                  ！这里最好三维方向都取到<br><code>0.0 0.5 0.5  !Q</code>               ！首尾相连，形成回路<br><code>0.0 0.5 0.5  !Q</code><br><code>0.5 0.5 0.5  !M</code><br><code>0.5 0.5 0.5  !M</code><br><code>0.0 0.0 0.0  !G</code></p>
+<p> 这里的路径可以自己修改到认为合适<br><img src="/images/25.PNG" alt><br><img src="/images/26.PNG" alt></p>
 </li>
 </ol>
-<p>修改KPOINTS文件：<br><code>LaMn3Rh4O12</code>             名字（随便写，不影响计算）<br><code>0</code>                                   自动产生K点<br><code>Monkhorest-Pack</code>         以M-P方式来自动生成K点<br><code>7 7 7</code>                             确定沿倒格子各方向上网格点的数目<br><code>0 0 0</code>                             对所按网格进行分割产生的K点进行平移的量</p>
-<p>修改为：<br><code>LaMn3Rh4O12</code>             名字（随便写，不影响计算）<br><code>10</code>                                 产生10个K点<br><code>Line-mode</code>                   使用直线取K点模式<br><code>rec</code><br><code>10 10 10</code><br><code>.0 0.5 0.0  !F</code>                  取K点的路径（可用MS构建）<br><code>.0 0.5 0.0  !F</code>                  ！这里最好三维方向都取到<br><code>0.0 0.5 0.5  !Q</code>               ！首尾相连，形成回路<br><code>0.0 0.5 0.5  !Q</code><br><code>0.5 0.5 0.5  !M</code><br><code>0.5 0.5 0.5  !M</code><br><code>0.0 0.0 0.0  !G</code></p>
-<p><img src="/images/25.PNG" alt></p>
-<p>这里的路径可以自己修改到认为合适<br><img src="/images/26.PNG" alt></p>
 <h2 id="GGA-U"><a href="#GGA-U" class="headerlink" title="GGA+U"></a>GGA+U</h2><p>操作方式同上，只需打开加U开关（INCAR中参数）<br><code>#LDAU= .TRUE.</code>            #控制是否加U<br><code>#LDAUL= -1 2 2 -1</code>       #-1：s,p 轨道   #2：d,f 轨道<br><code>#LDAUU= 0 4.7 3.7 0</code>   #LDAUU和LDAUJ为一对，差值为U值<br><code>#LDAUJ= 0 0.7 0.7 0</code><br><code>#LDAUPRINT= 2</code>           #固定<br><code>#LMAXMIX= 4</code>              #固定</p>
 <p>将以上注释掉的参数 取消注释（删除#）–即在计算中加入了U值</p>
 <h1 id="本人所研究体系LaMn3Rh4O12详细计算过程"><a href="#本人所研究体系LaMn3Rh4O12详细计算过程" class="headerlink" title="本人所研究体系LaMn3Rh4O12详细计算过程"></a>本人所研究体系LaMn3Rh4O12详细计算过程</h1><p>根据论文LaMn3Rh4O12: An Antiferromagnetic Quadruple Perovskite Synthesized at High Pressure， </p>
@@ -487,7 +486,7 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/14/随笔~基于chrome的油猴脚本/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/14/随笔~美服iphone ID创建/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Rin G">
@@ -501,7 +500,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2019/09/14/随笔~基于chrome的油猴脚本/" class="post-title-link" itemprop="url">随笔~基于chrome的油猴脚本</a>
+            <a href="/2019/09/14/随笔~美服iphone ID创建/" class="post-title-link" itemprop="url">随笔~美服iphone ID创建</a>
           
         </h1>
 
@@ -527,7 +526,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2019-09-16 17:33:05" itemprop="dateModified" datetime="2019-09-16T17:33:05+08:00">2019-09-16</time>
+                <time title="修改時間：2019-09-16 17:21:57" itemprop="dateModified" datetime="2019-09-16T17:21:57+08:00">2019-09-16</time>
               </span>
             
           
@@ -543,13 +542,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>在我们使用浏览器的时候总是抱怨他的功能不够强大，缺少这个缺少那个，那么好，浏览器支持的一强大的功能—–扩展，也就是我们常说的插件。</p>
-<p>在这里我要介绍的是一款特别好用的插件，用来管理用户的脚本，也可以下载很多很多用户的脚本，我会在文章最后分享我的脚本导出的文件，下面我介绍一下油猴(Tampermonkey)的安装使用方法以及几款常用脚本的安装使用。</p>
-<p>注：本人使用的是Chrome内核的浏览器，也就是平时的谷歌浏览器、360浏览器等，Firefox内核与Opera和UC应该可以通用，在这我介绍的是Chrome，请自行变通！！</p>
-<h2 id="一、安装油猴插件"><a href="#一、安装油猴插件" class="headerlink" title="一、安装油猴插件"></a>一、安装油猴插件</h2><p>来到谷歌商店油猴(Tampermonkey)插件，点击添加至Chrome，弹出确认框点击添加，你的浏览器就有油猴啦，右上角就会有显示了。</p>
-<p>可能上边这个谷歌商店的链接有的用户会被墙，所以请到本人之前的博客搭建SS进行翻墙或者从百度上寻找资源自行安装。</p>
-<h2 id="二、油猴脚本的添加与使用"><a href="#二、油猴脚本的添加与使用" class="headerlink" title="二、油猴脚本的添加与使用"></a>二、油猴脚本的添加与使用</h2><p>先上干货，<a href="https://greasyfork.org/zh-CN/scripts·">https://greasyfork.org/zh-CN/scripts·</a></p>
-<p>这是我平时寻找油猴脚本最喜欢和最常用的地方，具体有哪些好用方便的脚本用户可以自行探索。</p>
+          <p>翻墙上美服iphone官网，找一个没有注册过的邮箱进行注册，完成注册！！（把街道信息随便填填即可不用填支付信息）</p>
+<p>话说现在PayPal可以使用中国内地的信用卡和储蓄卡了，或许可以一试？</p>
 
         
       
@@ -663,7 +657,7 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/14/随笔~美服iphone ID创建/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/14/随笔~基于chrome的油猴脚本/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Rin G">
@@ -677,7 +671,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2019/09/14/随笔~美服iphone ID创建/" class="post-title-link" itemprop="url">随笔~美服iphone ID创建</a>
+            <a href="/2019/09/14/随笔~基于chrome的油猴脚本/" class="post-title-link" itemprop="url">随笔~基于chrome的油猴脚本</a>
           
         </h1>
 
@@ -703,7 +697,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2019-09-16 17:21:57" itemprop="dateModified" datetime="2019-09-16T17:21:57+08:00">2019-09-16</time>
+                <time title="修改時間：2019-09-16 17:33:05" itemprop="dateModified" datetime="2019-09-16T17:33:05+08:00">2019-09-16</time>
               </span>
             
           
@@ -719,8 +713,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>翻墙上美服iphone官网，找一个没有注册过的邮箱进行注册，完成注册！！（把街道信息随便填填即可不用填支付信息）</p>
-<p>话说现在PayPal可以使用中国内地的信用卡和储蓄卡了，或许可以一试？</p>
+          <p>在我们使用浏览器的时候总是抱怨他的功能不够强大，缺少这个缺少那个，那么好，浏览器支持的一强大的功能—–扩展，也就是我们常说的插件。</p>
+<p>在这里我要介绍的是一款特别好用的插件，用来管理用户的脚本，也可以下载很多很多用户的脚本，我会在文章最后分享我的脚本导出的文件，下面我介绍一下油猴(Tampermonkey)的安装使用方法以及几款常用脚本的安装使用。</p>
+<p>注：本人使用的是Chrome内核的浏览器，也就是平时的谷歌浏览器、360浏览器等，Firefox内核与Opera和UC应该可以通用，在这我介绍的是Chrome，请自行变通！！</p>
+<h2 id="一、安装油猴插件"><a href="#一、安装油猴插件" class="headerlink" title="一、安装油猴插件"></a>一、安装油猴插件</h2><p>来到谷歌商店油猴(Tampermonkey)插件，点击添加至Chrome，弹出确认框点击添加，你的浏览器就有油猴啦，右上角就会有显示了。</p>
+<p>可能上边这个谷歌商店的链接有的用户会被墙，所以请到本人之前的博客搭建SS进行翻墙或者从百度上寻找资源自行安装。</p>
+<h2 id="二、油猴脚本的添加与使用"><a href="#二、油猴脚本的添加与使用" class="headerlink" title="二、油猴脚本的添加与使用"></a>二、油猴脚本的添加与使用</h2><p>先上干货，<a href="https://greasyfork.org/zh-CN/scripts·">https://greasyfork.org/zh-CN/scripts·</a></p>
+<p>这是我平时寻找油猴脚本最喜欢和最常用的地方，具体有哪些好用方便的脚本用户可以自行探索。</p>
 
         
       
@@ -923,95 +922,6 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/12/实验~硝化甘油烈性炸药制备/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Rin G">
-      <meta itemprop="description" content="希望与绝望的相抵，是正负平衡">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="君の影 星のように">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/09/12/实验~硝化甘油烈性炸药制备/" class="post-title-link" itemprop="url">实验~硝化甘油</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              
-                
-              
-
-              <time title="創建時間：2019-09-12 00:00:00" itemprop="dateCreated datePublished" datetime="2019-09-12T00:00:00+08:00">2019-09-12</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2019-09-18 09:23:50" itemprop="dateModified" datetime="2019-09-18T09:23:50+08:00">2019-09-18</time>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          Something was encrypted, please enter password to read
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/09/12/实验~硝化甘油烈性炸药制备/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/12/教程~VPS搭建SSR服务器 /">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1087,6 +997,95 @@
 <p><code>yum install net-tools -y &amp;&amp; wget --no-check-certificate -O appex.sh</code><br><code>https://raw.githubusercontent.com/0oVicero0/serverSpeeder_Install/master/appex.sh &amp;&amp; bash appex.sh install</code></p>
 <p>按回车键继续，系统会自动安装锐速，同时会先后要求我们设置锐速的三项信息。按照下图提示，我们每次都直接回车继续即可。</p>
 <h2 id="第五步：使用Shadowsocks连接"><a href="#第五步：使用Shadowsocks连接" class="headerlink" title="第五步：使用Shadowsocks连接"></a>第五步：使用Shadowsocks连接</h2>
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/12/实验~硝化甘油烈性炸药制备/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Rin G">
+      <meta itemprop="description" content="希望与绝望的相抵，是正负平衡">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="君の影 星のように">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/09/12/实验~硝化甘油烈性炸药制备/" class="post-title-link" itemprop="url">实验~硝化甘油</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              
+                
+              
+
+              <time title="創建時間：2019-09-12 00:00:00" itemprop="dateCreated datePublished" datetime="2019-09-12T00:00:00+08:00">2019-09-12</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2019-09-18 09:23:50" itemprop="dateModified" datetime="2019-09-18T09:23:50+08:00">2019-09-18</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          Something was encrypted, please enter password to read
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/09/12/实验~硝化甘油烈性炸药制备/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
