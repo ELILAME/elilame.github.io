@@ -62,6 +62,8 @@
 <meta property="og:site_name" content="君の影 星のように">
 <meta property="og:description" content="钙钛矿材料电磁性能一般计算方式我们计算钙钛矿电磁性能的时候一般通过VASP软件包完成，由于作者本人才疏学浅，故本文着重探讨计算的操作方面，对相关原理和基本理论不做详细解释。 计算方式分类： GGA 和 GGA+U 体系结构分类：Fim（亚铁磁）  Fm（铁磁）  AFM-（反铁磁）包括：A-（A型反铁磁） B-（B型反铁磁） C-（C型反铁磁） G-（G型反铁磁） VASP计算基本输入文件：INC">
 <meta property="og:locale" content="zh-HK">
+<meta property="og:image" content="http://yoursite.com/images/25.PNG">
+<meta property="og:image" content="http://yoursite.com/images/26.PNG">
 <meta property="og:image" content="http://yoursite.com/images/1.png">
 <meta property="og:image" content="http://yoursite.com/images/2.PNG">
 <meta property="og:image" content="http://yoursite.com/images/3.PNG">
@@ -81,11 +83,16 @@
 <meta property="og:image" content="http://yoursite.com/images/17.PNG">
 <meta property="og:image" content="http://yoursite.com/images/18.PNG">
 <meta property="og:image" content="http://yoursite.com/images/19.PNG">
-<meta property="og:updated_time" content="2019-09-18T02:32:42.932Z">
+<meta property="og:image" content="http://yoursite.com/images/20.PNG">
+<meta property="og:image" content="http://yoursite.com/images/21.PNG">
+<meta property="og:image" content="http://yoursite.com/images/22.PNG">
+<meta property="og:image" content="http://yoursite.com/images/23.PNG">
+<meta property="og:image" content="http://yoursite.com/images/24.PNG">
+<meta property="og:updated_time" content="2019-09-21T08:42:21.039Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="随笔~钙钛矿材料电磁性能一般计算方式">
 <meta name="twitter:description" content="钙钛矿材料电磁性能一般计算方式我们计算钙钛矿电磁性能的时候一般通过VASP软件包完成，由于作者本人才疏学浅，故本文着重探讨计算的操作方面，对相关原理和基本理论不做详细解释。 计算方式分类： GGA 和 GGA+U 体系结构分类：Fim（亚铁磁）  Fm（铁磁）  AFM-（反铁磁）包括：A-（A型反铁磁） B-（B型反铁磁） C-（C型反铁磁） G-（G型反铁磁） VASP计算基本输入文件：INC">
-<meta name="twitter:image" content="http://yoursite.com/images/1.png">
+<meta name="twitter:image" content="http://yoursite.com/images/25.PNG">
   <link rel="canonical" href="http://yoursite.com/2019/09/17/随笔~钙钛矿材料电磁性能一般计算方式/">
 
 
@@ -265,7 +272,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2019-09-18 10:32:42" itemprop="dateModified" datetime="2019-09-18T10:32:42+08:00">2019-09-18</time>
+                <time title="修改時間：2019-09-21 16:42:21" itemprop="dateModified" datetime="2019-09-21T16:42:21+08:00">2019-09-21</time>
               </span>
             
           
@@ -291,11 +298,24 @@
 <p> KPOINTS:<br> <code>LaMn3Rh4O12</code><br><code>0</code><br><code>Monkhorest-Pack</code><br><code>7 7 7</code><br><code>0 0 0</code></p>
 <p>POSCAR:<br>原子坐标文件，使用MS生成</p>
 <p>POTCAR：<br>赝势文件：cat La/POTACR Mn/POTCAR Rh/POTCAR O/POTCAR &gt; POTCAR</p>
-<h1 id="基本操作流程"><a href="#基本操作流程" class="headerlink" title="基本操作流程"></a>基本操作流程</h1><h2 id="GGA"><a href="#GGA" class="headerlink" title="GGA"></a>GGA</h2><p>1.将以上4个基本输入文件放入opt-isif3文件夹中，再将vasp.pbs文件导入，使用qsub vasp.pbs 提交任务。</p>
-<p>2.将opt-isif3文件夹中INCAR, KPOINTS, POTCAR和CONTCAR文件导入opt-isif2文件夹中，将CONTCAR改名为POSCAR（mv CONTCAR POSCAR），修改参数<br>sed -i ‘s/ISIF=3/ISIF=2/g’ INCAR<br>sed -i ‘s/EDIFF=1.0e-04/EDIFF=1.0e-05/g’ INCAR<br>sed -i ‘s/EDIFFG=-0.05/EDIFFG=-0.01/g’ INCAR，<br>将vasp.pbs文件导入，使用qsub vasp.pbs 提交任务。</p>
-<p>3.将opt-isif2文件夹中所有文件拷入scf文件夹中，修改参数<br>sed -i ‘s/ISIF=2/#ISIF=2/g’ INCAR<br>sed -i ‘s/EDIFFG=-0.01/#EDIFFG=-0.01/g’ INCAR<br>sed -i ‘s/#LORBIT = 11/LORBIT = 11/g’ INCAR<br>sed -i ‘s/POTIM= 0.2/#POTIM= 0.2/g’ INCAR<br>sed -i ‘s/NSW=551/NSW=0/g’ INCAR<br>sed -i ‘s/IBRION= 2/#IBRION= 2/g’ INCAR<br>sed -i ‘s/LWAVE = .FALSE./LWAVE = .TURE./g’ INCAR<br>sed -i ‘s/LCHARG = .FALSE./LCHARG = .TURE./g’ INCAR<br>sed -i ‘s/ISMEAR= 0/ISMEAR= -5/g’ INCAR<br>sed -i ‘s/SIGMA= 0.2/#SIGMA= 0.2/g’ INCAR<br>将vasp.pbs文件导入，使用qsub vasp.pbs 提交任务。</p>
-<p>4.将scf文件夹中所有文件拷入scf文件夹中，修改参数<br>sed -i ‘s/7 7 7/10 10 10/g’ KPOINTS<br>sed -i ‘s/ISTART= 0/ISTART= 1/g’ INCAR<br>sed -i ‘s/ICHARG= 2/ICHARG= 11/g’ INCAR<br>将vasp.pbs文件导入，使用qsub vasp.pbs 提交任务。</p>
-<h2 id="GGA-U"><a href="#GGA-U" class="headerlink" title="GGA+U"></a>GGA+U</h2><p>操作方式类似</p>
+<h1 id="基本操作流程"><a href="#基本操作流程" class="headerlink" title="基本操作流程"></a>基本操作流程</h1><h2 id="GGA"><a href="#GGA" class="headerlink" title="GGA"></a>GGA</h2><ol>
+<li><p>将以上4个基本输入文件放入opt-isif3文件夹中，再将vasp.pbs文件导入，使用qsub vasp.pbs 提交任务。</p>
+</li>
+<li><p>将opt-isif3文件夹中INCAR, KPOINTS, POTCAR和CONTCAR文件导入opt-isif2文件夹中，将CONTCAR改名为POSCAR（mv CONTCAR POSCAR），修改参数<br>sed -i ‘s/ISIF=3/ISIF=2/g’ INCAR<br>sed -i ‘s/EDIFF=1.0e-04/EDIFF=1.0e-05/g’ INCAR<br>sed -i ‘s/EDIFFG=-0.05/EDIFFG=-0.01/g’ INCAR，<br>将vasp.pbs文件导入，使用qsub vasp.pbs 提交任务。</p>
+</li>
+<li><p>将opt-isif2文件夹中所有文件拷入scf文件夹中，修改参数<br>sed -i ‘s/ISIF=2/#ISIF=2/g’ INCAR<br>sed -i ‘s/EDIFFG=-0.01/#EDIFFG=-0.01/g’ INCAR<br>sed -i ‘s/#LORBIT = 11/LORBIT = 11/g’ INCAR<br>sed -i ‘s/POTIM= 0.2/#POTIM= 0.2/g’ INCAR<br>sed -i ‘s/NSW=551/NSW=0/g’ INCAR<br>sed -i ‘s/IBRION= 2/#IBRION= 2/g’ INCAR<br>sed -i ‘s/LWAVE = .FALSE./LWAVE = .TURE./g’ INCAR<br>sed -i ‘s/LCHARG = .FALSE./LCHARG = .TURE./g’ INCAR<br>sed -i ‘s/ISMEAR= 0/ISMEAR= -5/g’ INCAR<br>sed -i ‘s/SIGMA= 0.2/#SIGMA= 0.2/g’ INCAR<br>将vasp.pbs文件导入，使用qsub vasp.pbs 提交任务。</p>
+</li>
+<li><p>将scf文件夹中所有文件拷入dos文件夹中，修改参数<br>sed -i ‘s/7 7 7/10 10 10/g’ KPOINTS<br>sed -i ‘s/ISTART= 0/ISTART= 1/g’ INCAR<br>sed -i ‘s/ICHARG= 2/ICHARG= 11/g’ INCAR<br>将vasp.pbs文件导入，使用qsub vasp.pbs 提交任务。</p>
+</li>
+<li><p>将scf文件夹中所有文件拷入bands文件夹中，修改参数<br>sed -i ‘s/ISMEAR= -5/ISMEAR= 0/g’ INCAR<br>sed -i ‘s/#SIGMA= 0.2/SIGMA= 0.2/g’ INCAR<br>sed -i ‘s/ISTART= 0/ISTART= 1/g’ INCAR<br>sed -i ‘s/ICHARG= 2/ICHARG= 11/g’ INCAR</p>
+</li>
+</ol>
+<p>修改KPOINTS文件：<br><code>LaMn3Rh4O12</code>             名字（随便写，不影响计算）<br><code>0</code>                                   自动产生K点<br><code>Monkhorest-Pack</code>         以M-P方式来自动生成K点<br><code>7 7 7</code>                             确定沿倒格子各方向上网格点的数目<br><code>0 0 0</code>                             对所按网格进行分割产生的K点进行平移的量</p>
+<p>修改为：<br><code>LaMn3Rh4O12</code>             名字（随便写，不影响计算）<br><code>10</code>                                 产生10个K点<br><code>Line-mode</code>                   使用直线取K点模式<br><code>rec</code><br><code>10 10 10</code><br><code>.0 0.5 0.0  !F</code>                  取K点的路径（可用MS构建）<br><code>.0 0.5 0.0  !F</code>                  ！这里最好三维方向都取到<br><code>0.0 0.5 0.5  !Q</code>               ！首尾相连，形成回路<br><code>0.0 0.5 0.5  !Q</code><br><code>0.5 0.5 0.5  !M</code><br><code>0.5 0.5 0.5  !M</code><br><code>0.0 0.0 0.0  !G</code></p>
+<p><img src="/images/25.PNG" alt></p>
+<p>这里的路径可以自己修改到认为合适<br><img src="/images/26.PNG" alt></p>
+<h2 id="GGA-U"><a href="#GGA-U" class="headerlink" title="GGA+U"></a>GGA+U</h2><p>操作方式同上，只需打开加U开关（INCAR中参数）<br><code>#LDAU= .TRUE.</code>            #控制是否加U<br><code>#LDAUL= -1 2 2 -1</code>       #-1：s,p 轨道   #2：d,f 轨道<br><code>#LDAUU= 0 4.7 3.7 0</code>   #LDAUU和LDAUJ为一对，差值为U值<br><code>#LDAUJ= 0 0.7 0.7 0</code><br><code>#LDAUPRINT= 2</code>           #固定<br><code>#LMAXMIX= 4</code>              #固定</p>
+<p>将以上注释掉的参数 取消注释（删除#）–即在计算中加入了U值</p>
 <h1 id="本人所研究体系LaMn3Rh4O12详细计算过程"><a href="#本人所研究体系LaMn3Rh4O12详细计算过程" class="headerlink" title="本人所研究体系LaMn3Rh4O12详细计算过程"></a>本人所研究体系LaMn3Rh4O12详细计算过程</h1><p>根据论文LaMn3Rh4O12: An Antiferromagnetic Quadruple Perovskite Synthesized at High Pressure， </p>
 <p>LaMn3Rh4O12为四层钙钛矿结构，而我想要研究其磁性质，在整个体系中只有Mn和Rh对体系总体磁矩（磁性质）有影响，故需要考虑Mn和Rh的原子磁矩（Mn和Rh原子核外电子之间会有相互影响）。此处，我在画出晶体模型后我再详细解释！！</p>
 <h2 id="进行计算的第一步就是画出晶体结构3D图"><a href="#进行计算的第一步就是画出晶体结构3D图" class="headerlink" title="进行计算的第一步就是画出晶体结构3D图"></a>进行计算的第一步就是画出晶体结构3D图</h2><p>我们所使用的软件为MS（Diamond也可以）。</p>
@@ -353,7 +373,7 @@
 </li>
 <li><p>在不同的磁性结构文件夹下进一步根据计算方式划分并建立文件夹，如：/home/hpli/gezhizhong/LaMn3Rh4O12/Fm/GGA，GGA+U</p>
 </li>
-<li><p>请将INCAR，KPOINTS，POSCAR，POTCAR 拷入GGA或者GGA+U文件夹内，然后运行一键运行脚本auto-gga或者auto-gga+u，完成后应该如：/home/hpli/gezhizhong/LaMn3Rh4O12/Fm/GGA/opt-isif3，opt-isif2，scf，dos<br><img src="/images/19.PNG" alt></p>
+<li><p>请将INCAR，KPOINTS，POSCAR，POTCAR 拷入GGA或者GGA+U文件夹内，然后运行一键运行脚本auto-gga或者auto-gga+u，完成后应该如：/home/hpli/gezhizhong/LaMn3Rh4O12/Fm/GGA/opt-isif3，opt-isif2，scf，dos<br><img src="/images/19.PNG" alt><br>脚本链接：<a href="https://pan.baidu.com/s/1BL98X37npwe3rf0yMz-FdQ">https://pan.baidu.com/s/1BL98X37npwe3rf0yMz-FdQ</a><br>提取码：g7ji </p>
 </li>
 </ol>
 <h2 id="INCAR，KPOINTS，POSCAR，POTCAR详解"><a href="#INCAR，KPOINTS，POSCAR，POTCAR详解" class="headerlink" title="INCAR，KPOINTS，POSCAR，POTCAR详解"></a>INCAR，KPOINTS，POSCAR，POTCAR详解</h2><ol>
@@ -374,7 +394,15 @@
 <li>INCAR</li>
 </ol>
 <p><code>system =LaMn3Rh4O12</code>     #名字（随便写，不影响计算）<br><code>ISTART= 0</code>              #0：全新一次计算    #1: 读WAVECAR<br><code>ICHARG= 2</code>            #2:从原子中读charge（初猜）  #1: 读CHGCAR<br><code>PREC = high</code>           #计算精度<br><code>IBRION= 2</code><br><code>NSW=551</code>              #步数<br><code>ENCUT=450.000</code>   #截断势能<br><code>EDIFF=1.0e-04</code>        #电子迭代收敛标准<br><code>EDIFFG=-0.05</code>         #原子弛豫收敛标准<br><code>ISIF=3</code>                     #3：计算应力且对结构进行优化   #2：原子弛豫<br><code>ISMEAR= 0</code>            #ISMEAR和SIGMA为一对，进行结构优化和原子弛豫时，取<code>0</code>和<code>0.2</code> ，scf 和dos 计算时使用<code>-5</code>，注释掉SIGMA<br><code>SIGMA= 0.2</code><br><code>LWAVE = .FALSE.</code>    #计算平面波，计算scf时打开，与LCHARG为一对<br><code>LCHARG = .FALSE.</code><br><code>LBERRY = .FALSE.</code><br><code>#ISYM= 0</code><br><code>#IALGO= 48</code><br><code>POTIM= 0.2</code>             #原子每步移动大小<br><code>#ALGO = Normal</code><br><code>#LREAL= FALSE</code><br><code>LREAL= Auto</code>            #确定投影算法是否在实空间或倒空间计算<br><code>#NELM= 850</code><br><code>MAGMOM=2*0 6*6 8*6 24*0</code>      #原子数*原子理论磁矩（根据d,f轨道得到）<br><code>#VOSKOWN= 1</code><br><code>#LORBIT = 11  #For LDOS calculation</code><br><code>#ICHARG = 11</code><br><code>ISPIN= 2</code>                       #自旋极化(一般都须打开)<br><code>#LDAU= .TRUE.</code>            #控制是否加U<br><code>#LDAUL= -1 2 2 -1</code>       #-1：s,p 轨道   #2：d,f 轨道<br><code>#LDAUU= 0 4.7 3.7 0</code>   #LDAUU和LDAUJ为一对，差值为U值<br><code>#LDAUJ= 0 0.7 0.7 0</code><br><code>#LDAUPRINT= 2</code>           #固定<br><code>#LMAXMIX= 4</code>              #固定<br><code>#LPARD= .TRUE.</code><br><code>#NBMOD= -3</code><br><code>#EINT= -0.5</code><br><code>NCORE=4</code></p>
-<h2 id="基本完成vasp计算，使用P4vasp处理数据，用origin绘图"><a href="#基本完成vasp计算，使用P4vasp处理数据，用origin绘图" class="headerlink" title="基本完成vasp计算，使用P4vasp处理数据，用origin绘图"></a>基本完成vasp计算，使用P4vasp处理数据，用origin绘图</h2>
+<h2 id="基本完成vasp计算，使用P4vasp处理数据，用origin绘图"><a href="#基本完成vasp计算，使用P4vasp处理数据，用origin绘图" class="headerlink" title="基本完成vasp计算，使用P4vasp处理数据，用origin绘图"></a>基本完成vasp计算，使用P4vasp处理数据，用origin绘图</h2><ol>
+<li><p>将VASP计算完成后的输出文件vasprun.xml导入本地</p>
+</li>
+<li><p>新建文件夹，将P4VASP(p4v)和vasprun.xml放入同一个文件夹中，双击打开p4v，会自动读取vasprun.xml</p>
+</li>
+<li><p>按个人需求打开 态密度 或者 能带图 然后导出数据<br><img src="/images/20.PNG" alt><br><img src="/images/21.PNG" alt><br><img src="/images/22.PNG" alt><br><img src="/images/23.PNG" alt><br><img src="/images/24.PNG" alt></p>
+</li>
+</ol>
+
     </div>
 
     
